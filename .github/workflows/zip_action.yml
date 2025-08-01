@@ -1,0 +1,15 @@
+name: Zip model directory with its contents
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    Zip-model-directory:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Run zip action
