@@ -10,100 +10,178 @@
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <div class="header-title">
-            <h1>Language Translator</h1>
-        </div>
-        <p class="header-subtitle">Translate between English and Sinhala </p>
+    <!-- Background decoration -->
+    <div class="bg-decoration">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
     </div>
-
-    <div class="translator-container">
-        <div class="translator-card">
-            <form id="translateForm" method="POST">
-                <input type="hidden" name="source_lang" id="source-lang-input" value="{{ source_lang | default('English') }}">
-                <input type="hidden" name="target_lang" id="target-lang-input" value="{{ target_lang | default('Sinhala') }}">
-                <div class="language-bar">
-                    <div class="language-info">
-                        <span class="flag" id="source-flag">{{ '🇱🇰' if source_lang == 'Sinhala' else '🇺🇸' }}</span>
-                        <span class="language-name" id="source-lang">{{ source_lang | default('English') }}</span>
-                    </div>
-                    <button type="button" class="swap-btn" id="swap-languages" title="Swap languages">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M8 3 4 7l4 4"/>
-                            <path d="m4 7h16"/>
-                            <path d="m16 21 4-4-4-4"/>
-                            <path d="M20 17H4"/>
-                        </svg>
-                    </button>
-                    <div class="language-info">
-                        <span class="language-name" id="target-lang">{{ target_lang | default('Sinhala') }}</span>
-                        <span class="flag" id="target-flag">{{ '🇺🇸' if target_lang == 'English' else '🇱🇰' }}</span>
-                    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="header-title">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.01-4.65.51-6.81C9.9 4.02 8.28 3.38 6.61 3.79c-.46.11-.8.4-.99.82-.19.42-.13.88.15 1.25.27.37.71.56 1.15.48.44-.08.82-.35 1.02-.73.2-.38.15-.82-.12-1.15-.27-.33-.71-.52-1.15-.48-.44.04-.82.25-1.02.63-.2.38-.15.82.12 1.15.27.33.71.52 1.15.48.44-.04.82-.25 1.02-.63.2-.38.15-.82-.12-1.15z"/>
+                    </svg>
                 </div>
-
-                <div class="translation-areas">
-                    <div class="text-area-container">
-                        <textarea
-                                id="source-text"
-                                name="source_text"
-                                placeholder="Text in {{ source_lang | default('English') }}"
-                                class="text-area source-area"
-                        ></textarea>
-                        <div class="text-controls">
-                            <span class="char-count" id="source-count">0 characters</span>
-                            <button type="button" class="control-btn clear-btn" id="clear-text" style="display: none;">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="m18 6-12 12"/>
-                                    <path d="m6 6 12 12"/>
-                                </svg>
-                                Clear
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="text-area-container target-container">
-                        <div class="text-area target-area {% if result %}has-content{% endif %} {% if target_lang == 'Sinhala' %}sinhala-content{% endif %}" id="translated-text">
-                            <div class="placeholder" id="translation-placeholder" {% if result %}style="display: none;"{% endif %}>Translation</div>
-                            <div class="loading" id="loading-indicator" style="display: none;">
-                                <div class="spinner"></div>
-                                <span>Translating...</span>
-                            </div>
-                            <div class="translation-result" id="translation-result" {% if not result %}style="display: none;"{% endif %}>{{ result.translation | default('') }}</div>
-                        </div>
-                        <div class="text-controls">
-                            <span class="char-count" id="target-count">{{ result.translation | default('') | length }} characters</span>
-                            <button type="button" class="control-btn copy-btn" id="copy-text" {% if not result %}style="display: none;"{% endif %}>
-                                <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-                                </svg>
-                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
-                                    <path d="M20 6 9 17l-5-5"/>
-                                </svg>
-                                <span class="copy-text">Copy</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="examples-section">
-            <h3>Try these examples:</h3>
-            <div class="examples-grid" id="examples-grid">
-                <button class="example-btn" data-si="ආයුබෝවන්" data-en="Victory">Victory</button>
-                <button class="example-btn" data-si="ස්තූතියි" data-en="Thank you">Thank You!</button>
-                <button class="example-btn" data-si="කොහොමද" data-en="How are you">How are you?</button>
-                <button class="example-btn" data-si="හොඳයි" data-en="I'm good">I'm Good</button>
+                <h1>Language Bridge</h1>
+            </div>
+            <p class="header-subtitle">Professional Sinhala ⇄ English Translation</p>
+            <div class="feature-badges">
+                <span class="badge">Real-time</span>
+                <span class="badge">AI-Powered</span>
+                <span class="badge">Accurate</span>
             </div>
         </div>
-    </div>
 
-    <footer class="footer">
-        <p>Professional Sinhala-English Translator • Built With Neural Machine translation technologies</p>
-    </footer>
-</div>
-<script src="../static/js/script.js"></script>
+        <div class="translator-container">
+            <div class="translator-card">
+                <form id="translateForm" method="POST">
+                    <input type="hidden" name="source_lang" id="source-lang-input" value="{{ source_lang | default('English') }}">
+                    <input type="hidden" name="target_lang" id="target-lang-input" value="{{ target_lang | default('Sinhala') }}">
+                    
+                    <div class="language-bar">
+                        <div class="language-info">
+                            <div class="flag-container">
+                                <span class="flag" id="source-flag">{{ '🇱🇰' if source_lang == 'Sinhala' else '🇺🇸' }}</span>
+                            </div>
+                            <span class="language-name" id="source-lang">{{ source_lang | default('English') }}</span>
+                        </div>
+                        
+                        <button type="button" class="swap-btn" id="swap-languages" title="Swap languages">
+                            <div class="swap-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M8 3 4 7l4 4"/>
+                                    <path d="m4 7h16"/>
+                                    <path d="m16 21 4-4-4-4"/>
+                                    <path d="M20 17H4"/>
+                                </svg>
+                            </div>
+                        </button>
+                        
+                        <div class="language-info">
+                            <span class="language-name" id="target-lang">{{ target_lang | default('Sinhala') }}</span>
+                            <div class="flag-container">
+                                <span class="flag" id="target-flag">{{ '🇺🇸' if target_lang == 'English' else '🇱🇰' }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="translation-areas">
+                        <div class="text-area-container">
+                            <div class="area-header">
+                                <h3>Source Text</h3>
+                                <div class="language-indicator">{{ source_lang | default('English') }}</div>
+                            </div>
+                            <textarea
+                                id="source-text"
+                                name="source_text"
+                                placeholder="Enter text to translate..."
+                                class="text-area source-area"
+                            ></textarea>
+                            <div class="text-controls">
+                                <span class="char-count" id="source-count">0 characters</span>
+                                <div class="control-buttons">
+                                    <button type="button" class="control-btn clear-btn" id="clear-text" style="display: none;">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="m18 6-12 12"/>
+                                            <path d="m6 6 12 12"/>
+                                        </svg>
+                                        Clear
+                                    </button>
+                                    <button type="submit" class="control-btn translate-btn">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M5 12l14 0"/>
+                                            <path d="m13 18l6 -6"/>
+                                            <path d="m13 6l6 6"/>
+                                        </svg>
+                                        Translate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-area-container target-container">
+                            <div class="area-header">
+                                <h3>Translation</h3>
+                                <div class="language-indicator">{{ target_lang | default('Sinhala') }}</div>
+                            </div>
+                            <div class="text-area target-area {% if result %}has-content{% endif %} {% if target_lang == 'Sinhala' %}sinhala-content{% endif %}" id="translated-text">
+                                <div class="placeholder" id="translation-placeholder" {% if result %}style="display: none;"{% endif %}>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2L2 7h20L12 2z"/>
+                                        <path d="M2 17h20"/>
+                                        <path d="M6 7v10"/>
+                                        <path d="M18 7v10"/>
+                                    </svg>
+                                    Translation will appear here
+                                </div>
+                                <div class="loading" id="loading-indicator" style="display: none;">
+                                    <div class="spinner"></div>
+                                    <span>Translating...</span>
+                                </div>
+                                <div class="translation-result" id="translation-result" {% if not result %}style="display: none;"{% endif %}>{{ result.translation | default('') }}</div>
+                            </div>
+                            <div class="text-controls">
+                                <span class="char-count" id="target-count">{{ result.translation | default('') | length }} characters</span>
+                                <div class="control-buttons">
+                                    <button type="button" class="control-btn copy-btn" id="copy-text" {% if not result %}style="display: none;"{% endif %}>
+                                        <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                        </svg>
+                                        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                                            <path d="M20 6 9 17l-5-5"/>
+                                        </svg>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="examples-section">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                    </svg>
+                    Quick Examples
+                </h3>
+                <div class="examples-grid" id="examples-grid">
+                    <button class="example-btn" data-si="ආයුබෝවන්" data-en="Hello">
+                        <div class="example-text">Hello</div>
+                        <div class="example-translation">ආයුබෝවන්</div>
+                    </button>
+                    <button class="example-btn" data-si="ස්තූතියි" data-en="Thank you">
+                        <div class="example-text">Thank you</div>
+                        <div class="example-translation">ස්තූතියි</div>
+                    </button>
+                    <button class="example-btn" data-si="කොහොමද" data-en="How are you">
+                        <div class="example-text">How are you?</div>
+                        <div class="example-translation">කොහොමද</div>
+                    </button>
+                    <button class="example-btn" data-si="හොඳයි" data-en="I'm good">
+                        <div class="example-text">I'm good</div>
+                        <div class="example-translation">හොඳයි</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>🌟 Professional Neural Machine Translation • Built with Advanced AI Technology</p>
+                <div class="footer-stats">
+                    <span>🚀 Fast</span>
+                    <span>🎯 Accurate</span>
+                    <span>🔒 Secure</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="../static/js/script.js"></script>
 </body>
 </html>
