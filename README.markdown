@@ -26,7 +26,7 @@ A web-based application for real-time translation between Sinhala and English la
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/sinhala-english-translator.git
+   git clone https://github.com/Chamodi0206/Sinhala_English_Language_Translator.git
    cd sinhala-english-translator
    ```
 
@@ -50,7 +50,7 @@ A web-based application for real-time translation between Sinhala and English la
 5. **Set Up Models**
 
    - Download the pre-trained MarianMT models:
-     - English to Sinhala: Use the custom model from `C:\Users\User\Downloads\latest_model` (or adjust the path).
+     - English to Sinhala: Use the custom model from `\model\` (or adjust the path).
      - Sinhala to English: `Helsinki-NLP/opus-mt-mul-en` (download via Hugging Face).
    - Ensure the model paths are correctly specified in the `app.py` file.
 
