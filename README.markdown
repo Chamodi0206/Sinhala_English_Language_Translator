@@ -49,9 +49,17 @@ A web-based application for real-time translation between Sinhala and English la
 
 5. **Set Up Models**
 
-   - Download the pre-trained MarianMT models:
-     - English to Sinhala: Use the custom model from `\model\` (or adjust the path).
-     - Sinhala to English: `Helsinki-NLP/opus-mt-mul-en` (download via Hugging Face).
+   - **Download the English to Sinhala Model**:
+     1. Download the pre-trained model from: [https://drive.google.com/file/d/1QL-2_ZitOoHgKmo-h7suuqujKU16IUQ8/view?usp=sharing](https://drive.google.com/file/d/1QL-2_ZitOoHgKmo-h7suuqujKU16IUQ8/view?usp=sharing)
+     2. Create a `model` directory in the project root:
+        ```bash
+        mkdir model
+        ```
+     3. Extract the downloaded model files into the `model` directory.
+   
+   - **Download the Sinhala to English Model**:
+     - The application will automatically download `Helsinki-NLP/opus-mt-mul-en` from Hugging Face when first run.
+   
    - Ensure the model paths are correctly specified in the `app.py` file.
 
 6. **Run the Application**
