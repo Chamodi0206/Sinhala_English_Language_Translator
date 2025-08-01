@@ -1,6 +1,6 @@
 # Sinhala-English Translator
 
-![rathana](https://github.com/user-attachments/assets/17b72e7a-0abb-4bb5-ace4-fd4ebc33cbc6)
+![Application](https://raw.githubusercontent.com/Chamodi0206/Sinhala_English_Language_Translator/888e6206ebfa9e67142af9f4cb7346bd7b093819/static/file.svg)
 
 A web-based application for real-time translation between Sinhala and English languages, designed to assist language learners and enthusiasts.
 
@@ -57,7 +57,7 @@ A web-based application for real-time translation between Sinhala and English la
 6. **Run the Application**
 
    ```bash
-   python app.py
+   flask run
    ```
 
    Open your browser and navigate to `http://127.0.0.1:5000/`.
